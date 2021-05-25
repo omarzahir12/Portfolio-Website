@@ -4,7 +4,6 @@ if($_POST) {
     $contactName = "";
     $contactEmail = "";
     $contactSubject = "";
-    $concerned_department = "";
     $contactMessage = "";
     $email_body = "<div>";
       
@@ -30,13 +29,6 @@ if($_POST) {
                         </div>";
     }
       
-    if(isset($_POST['concerned_department'])) {
-        $concerned_department = filter_var($_POST['concerned_department'], FILTER_SANITIZE_STRING);
-        $email_body .= "<div>
-                           <label><b>Concerned Department:</b></label>&nbsp;<span>".$concerned_department."</span>
-                        </div>";
-    }
-      
     if(isset($_POST['contactMessage'])) {
         $contactMessage = htmlspecialchars($_POST['contactMessage']);
         $email_body .= "<div>
@@ -45,24 +37,11 @@ if($_POST) {
                         </div>";
     }
       
-    if($concerned_department == "billing") {
-        $recipient = "billing@domain.com";
-    }
-    else if($concerned_department == "marketing") {
-        $recipient = "marketing@domain.com";
-    }
-    else if($concerned_department == "technical support") {
-        $recipient = "tech.support@domain.com";
-    }
-    else {
-        $recipient = "contact@domain.com";
-    }
+    $recipient = "omarzahir12@gmail.com";
       
     $email_body .= "</div>";
  
-    $headers  = 'MIME-Version: 1.0' . "\r\n"
-    .'Content-type: text/html; charset=utf-8' . "\r\n"
-    .'From: ' . $contactEmail . "\r\n";
+    $headers  = 'From: ' . $contactEmail . "\r\n";
       
     if(mail($recipient, $contactSubject, $email_body, $headers)) {
         echo "<p>Thank you for contacting us, $contactName. You will get a reply within 24 hours.</p>";
