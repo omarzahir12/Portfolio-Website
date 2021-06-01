@@ -91,14 +91,14 @@ if(textArray.length) setTimeout(type, newTextDelay + 250);
 	/* Owl Carousel
 	------------------------------------------------------ */ 
 	$("#owl-slider").owlCarousel({
-        navigation: false,
+        navigation: true,
         pagination: true,
         itemsCustom : [
 	        [0, 1],
 	        [700, 2],
 	        [960, 3]
 	     ],
-        navigationText: false
+        navigationText: true
     });
 
 
